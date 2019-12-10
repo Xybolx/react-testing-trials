@@ -1,22 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
+import TeacherView from './components/TeacherView';
+import FizzBuzz from './components/FizzBuzz';
 import './App.css';
 
-function App() {
-  return (
+
+// lazy imports
+const Counter = React.lazy(() => (
+  import('./components/Counter')
+  ));
+  
+  const Toggler = React.lazy(() => (
+    import('./components/Toggler')
+    ));
+    
+    const WordArray = React.lazy(() => (
+      import('./components/WordArray')
+      ));
+      
+      const App = () => {
+        return (
     <div className="App">
+        <TeacherView />
+        <FizzBuzz />
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Suspense fallback={"Loading..."}>
+          <Toggler />
+          <Counter />
+          <WordArray />
+        </Suspense>
+        <h1 className="mt-3">Learn React</h1>
         <a
           className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          https://reactjs.org
         </a>
       </header>
     </div>
