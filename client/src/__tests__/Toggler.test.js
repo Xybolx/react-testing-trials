@@ -1,18 +1,15 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Toggler from './Toggler';
-
-Enzyme.configure({ adapter: new Adapter() });
+import { shallow } from 'enzyme';
+import Toggler from '../components/Toggler';
 
 describe('<Toggler/>', () => {
   let wrapper;
   const setState = jest.fn();
-  const useStateSpy = jest.spyOn(React, 'useState')
+  const useStateSpy = jest.spyOn(React, 'useState');
   useStateSpy.mockImplementation((init) => [init, setState]);
 
   beforeEach(() => {
-    wrapper = Enzyme.shallow(<Toggler />);
+    wrapper = shallow(<Toggler />);
   });
 
   afterEach(() => {
@@ -22,7 +19,7 @@ describe('<Toggler/>', () => {
   describe('Toggle', () => {
     it('it calls setToggle state to the opposite of current state (true/false)', () => {
       wrapper.find('#toggle').props().onClick();
-      expect(setState).toHaveBeenCalledTimes(1);
+      expect(setState).toHaveBeenCalledWith(true || false);
     });
   });
 

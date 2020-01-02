@@ -1,0 +1,4 @@
+{
+    "jestTestExplorer.debugOutput": "integratedTerminal",
+    "testExplorer.addToEditorContextMenu": true,
+}

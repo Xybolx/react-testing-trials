@@ -1,9 +1,6 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import WordArray from './WordArray';
-
-Enzyme.configure({ adapter: new Adapter() });
+import { shallow } from 'enzyme';
+import WordArray from '../components/WordArray';
 
 describe('<WordArray />', () => {
   let wrapper;
@@ -12,7 +9,7 @@ describe('<WordArray />', () => {
   useStateSpy.mockImplementation((init) => [init, setState]);
 
   beforeEach(() => {
-    wrapper = Enzyme.shallow(<WordArray />);
+    wrapper = shallow(<WordArray />);
   });
 
   afterEach(() => {
@@ -20,9 +17,9 @@ describe('<WordArray />', () => {
   });
 
   describe('addToArray', () => {
-    it("it calls setWords with ['dog']", () => {
+    it("it calls setWords with ['dog' || 'cat' || 'mouse]", () => {
       wrapper.find('#addToArray').props().onClick();
-      expect(setState).toHaveBeenCalledWith(['dog']);
+      expect(setState).toHaveBeenCalledWith(['dog' || 'cat' || 'mouse']);
     });
   });
 

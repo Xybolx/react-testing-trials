@@ -1,7 +1,13 @@
 import React from 'react';
 // import './TeacherView.css';
 
-const TeacherView = props => {
+const TeacherView = () => {
+
+    const [render, setRender] = React.useState(false);
+
+    React.useEffect(() => {
+       setRender(true); 
+    }, []);
 
     return (
         <div className="card">
@@ -10,12 +16,15 @@ const TeacherView = props => {
                 &nbsp;Hello, Mr. Beaver
             </h1>
             <div className="card-body">
-                <p>You have 3 students who are failing one or more of your classes</p>
-                <p>Click the following links for parent contact options:</p>
-                <p><button className="btn btn-link">Johnny Nogood</button>,<button className="btn btn-link">Kim Khardashian</button>,<button className="btn btn-link">Kanye West</button></p>
+                <h4>Students Who Are Failing One or More Classes</h4>
+                <ul className="list-unstyled">
+                    <li className="list-item">Johnny Nogood</li>
+                    <li className="list-item">Kim Khardashian</li>
+                    <li className="list-item">Kanye West</li>
+                </ul>
             </div>
             <div className="card-footer">
-            <button className="btn btn-link">Logout</button>
+                <button className="btn btn-link">Logout</button>
             </div>
         </div>
     );

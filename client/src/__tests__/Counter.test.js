@@ -1,9 +1,6 @@
 import React from 'react';
-import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Counter from './Counter';
-
-Enzyme.configure({ adapter: new Adapter() });
+import { shallow } from 'enzyme';
+import Counter from '../components/Counter';
 
 describe('<Counter />', () => {
   let wrapper;
@@ -12,7 +9,7 @@ describe('<Counter />', () => {
   useStateSpy.mockImplementation((init) => [init, setState]);
 
   beforeEach(() => {
-    wrapper = Enzyme.shallow(<Counter />);
+    wrapper = shallow(<Counter />);
   });
 
   afterEach(() => {
